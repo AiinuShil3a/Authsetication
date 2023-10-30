@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียน</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorMessage = urlParams.get('error');
+
+            if (errorMessage === 'username_taken') {
+                document.getElementById('error-message').textContent = 'ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว!';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-light">
+    <div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="card p-5" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center mb-4">ลงทะเบียน</h2>
+            <form action="register" method="post">
+                <div class="form-group">
+                    <label for="username">ชื่อผู้ใช้:</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">รหัสผ่าน:</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <p id="error-message" class="text-danger text-center"></p>
+                <button type="submit" class="btn btn-primary btn-block">ลงทะเบียน</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
